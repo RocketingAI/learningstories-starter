@@ -2,15 +2,19 @@
 ## The DealClosers.ai codebase.
 
 # Clerk Credentials
-  `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_c3VpdGVkLXBlZ2FzdXMtMTQuY2xlcmsuYWNjb3VudHMuZGV2JA
-  CLERK_SECRET_KEY=sk_test_TSl63YHOsHRTiOL9vxhe3vx0pJJDxE6yq1GG2ml3EY
-  CLERK_FRONTEND_API_URL=https://suited-pegasus-14.clerk.accounts.dev
-  CLERK_BACKEND_API_URL=https://api.clerk.com
-  CLERK_JWKS_URL=https://suited-pegasus-14.clerk.accounts.dev/.well-known/jwks.json
-  NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-  NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-  NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
-  NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/`
+`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_c3VpdGVkLXBlZ2FzdXMtMTQuY2xlcmsuYWNjb3VudHMuZGV2JA
+
+CLERK_SECRET_KEY=sk_test_TSl63YHOsHRTiOL9vxhe3vx0pJJDxE6yq1GG2ml3EY
+
+CLERK_FRONTEND_API_URL=https://suited-pegasus-14.clerk.accounts.dev
+
+CLERK_BACKEND_API_URL=https://api.clerk.com
+
+CLERK_JWKS_URL=https://suited-pegasus-14.clerk.accounts.dev/.well-known/jwks.json
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/`
 
 # Stripe Credentials
   `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_51QV0dWDEcwpHlv4Jl6cIo8C1A7m5uoV7v18DJ59sIZQjVcKoO3BIWhoGMWHazGn7dOG3sKGuqewLX4qxSG9OiFHK00LTAwB2pw
