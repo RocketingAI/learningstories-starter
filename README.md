@@ -15,9 +15,10 @@ cd DealClosers
    - `OPENAI_ASSISTANT_ID`
 
 ### Prisma Setup
-Execute a Prisma Schema Migration to setup or update the mySQL Database:
+Execute a Prisma Schema Migration to setup the tables or update the mySQL Database:
 ```bash
 npx prisma migrate dev --name init
+
 ```
 ### Stripe Setup
 To test Stripe checkout locally we must set up a local webhook listener with the Stripe CLI tool.
