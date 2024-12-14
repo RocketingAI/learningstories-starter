@@ -312,8 +312,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 >
                   {isSignedIn ? (
                     <>
+                      {/* For debugging */}
+                      {console.log('Clerk User Data:', {
+                        profileImageUrl: user?.profileImageUrl,
+                        imageUrl: user?.imageUrl,
+                        hasImage: user?.hasImage,
+                        fullName: user?.fullName,
+                        firstName: user?.firstName
+                      })}
                       <Avatar className="h-8 w-8 rounded-lg">
-                        <AvatarImage src={user?.profileImageUrl} alt={user?.fullName} />
+                        <AvatarImage 
+                          src={user?.imageUrl || user?.profileImageUrl} 
+                          alt={user?.fullName} 
+                        />
                         <AvatarFallback className="rounded-lg">{user?.firstName?.charAt(0)}</AvatarFallback>
                       </Avatar>
                       <div className="grid flex-1 text-left text-sm leading-tight">
