@@ -1,0 +1,20 @@
+:global(.codex-editor) {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+:global(.ce-block__content) {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+/* 
+:global(.ce-header .ce-block) {
+  max-width: none !important;
+  width: 100% !important;
+} */
+
+:global(.ce-paragraph) {
+  max-width: none !important;
+  width: 100% !important;
+}

@@ -1,0 +1,147 @@
+Question:
+What's the weather like at 6 Fox Run Lane in Frontenac, MO and how does it differ from 2330 Maybrook Lane in Kirkwood, MO right now?
+
+Answer:
+Currently, the weather at 6 Fox Run Lane in Frontenac, MO features scattered clouds with a temperature of 78.37°F and a humidity of 45%. Meanwhile, at 2330 Maybrook Lane in Kirkwood, MO, the weather is overcast with a temperature of 77.88°F and a humidity of 48%. In summary, both locations have fairly similar temperatures, with Frontenac being slightly warmer. The main difference lies in the cloud cover—scattered clouds in Frontenac versus overcast clouds in Kirkwood—and slightly higher humidity in Kirkwood.
+-----------------------------------------------------------------------------------------------------
+Question:
+Can you tell me the second word of text on the Calyan wax company referral program page?
+
+Answer:
+The second word of the text on the Calyan Wax Company's referral program page is "Program".
+-----------------------------------------------------------------------------------------------------
+Question:
+My company's name is Calyan Wax.
+Can you provide a short paragraph description of our business model
+and industry based on reviewing the most relevant 2 pages of our website?
+
+Answer:
+Calyan Wax operates within the handcrafted soy candle industry, offering a variety of non-toxic, vegan, and essential-oil-infused candles made in the USA. Their business model combines e-commerce with a strong social mission: for every purchase, a portion of proceeds goes to support anti-trafficking non-profits, aiding survivors of human trafficking. Their product range includes signature, black, amber jar, and ceramic candles, along with room sprays and gift sets. They emphasize quality and customer satisfaction, highlighted by their commitment to full refunds if customers do not fall in love with their products. Their business merges high-quality consumer goods with impactful social responsibility.
+-----------------------------------------------------------------------------------------------------
+Question:
+My company's name is Warehouse of Fixtures.
+The website url is https://woftng.com
+Can you provide a short paragraph description of our business model
+and industry based on reviewing the most relevant 2 pages of our website?
+Also, please include the most relevant method of valuing this company
+along with a detailed list of data fields needed to perform a valuation.
+
+Answer:
+Warehouse of Fixtures operates in the office furniture industry, providing both new and used office furniture to a variety of clients, including corporate offices, small businesses, and retail settings. The company offers an extensive range of products such as seating, desks, tables, cubicles, filing and storage solutions, and productivity accessories. In addition to sales, they also provide services like customization, quick shipping, and refurbishing to meet specific client needs. Their sustainable approach emphasizes eco-friendly practices. For valuing Warehouse of Fixtures, the most relevant method is the Discounted Cash Flow (DCF) analysis. The data fields needed for this valuation include: 1. **Financial Statements:** - Income Statements (last 3-5 years) - Balance Sheets (last 3-5 years) - Cash Flow Statements (last 3-5 years) 2. **Projections:** - Projected Income Statement - Projected Cash Flow Statement - Projected Balance Sheet 3. **Financial Metrics:** - Revenue Growth Rate - Operating Margins - Capital Expenditures - Working Capital Changes 4. **Discount Rate:** - Cost of Equity - Cost of Debt - Tax Rate - Capital Structure (Debt/Equity Ratio) 5. **Terminal Value:** - Perpetuity Growth Rate - Exit Multiple Collecting and inputting these data fields into a DCF model will help in estimating the present value of the company's future cash flows, providing a comprehensive valuation.
+-----------------------------------------------------------------------------------------------------
+
+My company's name is Warehouse of Fixtures.
+The website url is https://woftng.com/about/
+Can you provide a short paragraph description of our business model
+and industry based on reviewing the most relevant 2 pages of our website?
+Also, please include the most relevant method of valuing this company
+along with a detailed list of data fields needed to perform a valuation.
+-----------------------------------------------------------------------------------------------------
+
+Function Options Provided to the LLM
+
+    // get_current_weather
+    // get_current_weather_from_city
+    // get_coordinates
+    // summarize_results
+    // scrapeTextFromURL
+    // getWebsiteURLs
+    // send_email
+-----------------------------------------------------------------------------------------------------
+Function Descriptions
+
+    name: "get_coordinates",
+    description: "Get the Lat and Long coordinates of a location using the Google Maps API",
+    parameters: {
+        type: "object",
+        properties: {
+            location: {
+                type: "string",
+                description: "Use the address and/or city and state, e.g. San Francisco, CA",
+            },
+        },
+        required: ["location"],
+    },
+
+    name: "get_current_weather",
+    description: "Get the current weather using latitude and longitude",
+    parameters: {
+        type: "object",
+        properties: {
+            lat: {
+                type: "number",
+                description: "The latitude of the location",
+            },
+            lon: {
+                type: "number",
+                description: "The longitude of the location",
+            },
+        },
+        required: ["lat", "lon"],
+    },
+
+    name: "get_current_weather_from_city",
+    description: "Get the current weather in a given city",
+    parameters: {
+        type: "object",
+        properties: {
+            location: {
+                type: "string",
+                description: "The city, e.g. San Francisco or New York",
+            },
+            unit: {
+                type: "string",
+                enum: ["celsius", "fahrenheit"],
+            },
+        },
+        required: ["location"],
+    },
+
+    name: 'getWebsiteURLs',
+    description: "This function gets a list of all the webpage addresses for a given root website URL by scraping the website site map.",
+    parameters: {
+        type: "object",
+        properties: {
+            url: {
+                type: "string",
+                description: "url of a company webpage",
+            }
+        },
+        required: ["url"],
+    },
+
+    name: 'scrapeTextFromURL',
+    description: "This function scrapes text from a given URL",
+    parameters: {
+        type: "object",
+        properties: {
+            url: {
+                type: "string",
+                description: "url of a company webpage",
+            }
+        },
+        required: ["url"],
+    },
+
+    name: "summarize_results",
+    description: "Summarize the results of the function calls",
+    parameters: {
+        type: "object",
+        properties: {
+            prompt: {
+                type: "string",
+                description: "The original user prompt"
+            },
+            aggregatedData: {
+                type: "array",
+                items: {
+                    type: "object",
+                    properties: {
+                        functionName: { type: "string" },
+                        result: { type: "object" }
+                    }
+                }
+            }
+        },
+        required: ["prompt", "aggregatedData"],
+    },

@@ -1,0 +1,148 @@
+import { auth, clerkClient } from "@clerk/nextjs";
+import { NextResponse, Request } from "next/server";
+import Stripe from "stripe";
+import { env } from "~/env";
+
+// Initialize Stripe with proper error handling
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: "2023-10-16",
+  typescript: true,
+});
+
+const PLAN_DETAILS = {
+  'price_1QV0taDEcwpHlv4Jh8lH0436': { name: 'pro', teamSize: 1 },
+  'price_1QV0yQDEcwpHlv4JrXNiyVdU': { name: 'team', teamSize: 5 },
+  'price_1QV1ScDEcwpHlv4JdvlPymLk': { name: 'enterprise', teamSize: 15 }
+} as const;
+
+export async function POST(req: Request) {
+  try {
+    const { userId } = auth();
+    if (!userId) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    const body = await req.json();
+    const { priceId } = body as { priceId: keyof typeof PLAN_DETAILS };
+
+    if (!priceId || !PLAN_DETAILS[priceId as keyof typeof PLAN_DETAILS]) {
+      return new NextResponse("Invalid price ID", { status: 400 });
+    }
+
+    const planDetails = PLAN_DETAILS[priceId as keyof typeof PLAN_DETAILS];
+    
+    const user = await clerkClient.users.getUser(userId);
+    const email = user.emailAddresses.find(
+      (email) => email.id === user.primaryEmailAddressId
+    )?.emailAddress;
+
+    if (!email) {
+      return new NextResponse("No email found", { status: 400 });
+    }
+
+    // Create or get customer
+    let customer;
+    const existingCustomers = await stripe.customers.list({
+      email,
+      limit: 1,
+    });
+    
+    if (existingCustomers.data.length > 0) {
+      customer = existingCustomers.data[0];
+    } else {
+      customer = await stripe.customers.create({
+        email,
+        metadata: {
+          userId,
+        },
+      });
+    }
+
+    if (planDetails.name === 'team' || planDetails.name === 'enterprise') {
+      try {
+        const organization = await clerkClient.organizations.createOrganization({
+          name: `${user.firstName || user.username}'s Organization`,
+          createdBy: userId,
+          publicMetadata: {
+            stripeCustomerId: customer.id,
+          },
+        });
+
+        // Update user's private metadata
+        await clerkClient.users.updateUser(userId, {
+          privateMetadata: {
+            ...user.privateMetadata,
+            organizationSubscriptions: [
+              ...(user.privateMetadata.organizationSubscriptions || []),
+              {
+                orgId: organization.id,
+                subscriptionPlan: planDetails.name,
+                subscriptionStatus: 'pending',
+                teamSize: planDetails.teamSize,
+                stripeCustomerId: customer.id,
+                stripeSubscriptionId: null, // Will be updated in webhook
+              }
+            ]
+          }
+        });
+
+        // Create checkout session with organization metadata
+        const session = await stripe.checkout.sessions.create({
+          customer: customer.id,
+          line_items: [{ price: priceId, quantity: 1 }],
+          mode: "subscription",
+          success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard?session_id={CHECKOUT_SESSION_ID}`,
+          cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/pricing`,
+          metadata: {
+            userId,
+            planName: planDetails.name,
+            teamSize: planDetails.teamSize.toString(),
+            organizationId: organization.id,
+          },
+          subscription_data: {
+            metadata: {
+              userId,
+              planName: planDetails.name,
+              teamSize: planDetails.teamSize.toString(),
+              organizationId: organization.id,
+            },
+          },
+        });
+
+        return NextResponse.json({ url: session.url });
+      } catch (error) {
+        console.error('Error creating organization:', error);
+        return new NextResponse("Error creating organization", { status: 500 });
+      }
+    }
+
+    // Create checkout session without organization metadata
+    const session = await stripe.checkout.sessions.create({
+      customer: customer.id,
+      line_items: [{ price: priceId, quantity: 1 }],
+      mode: "subscription",
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/pricing`,
+      metadata: {
+        userId,
+        planName: planDetails.name,
+        teamSize: planDetails.teamSize.toString(),
+      },
+      subscription_data: {
+        metadata: {
+          userId,
+          planName: planDetails.name,
+          teamSize: planDetails.teamSize.toString(),
+        },
+      },
+    });
+
+    return NextResponse.json({ url: session.url });
+  } catch (error) {
+    console.error('Error in create-checkout-session:', error);
+    return new NextResponse(
+      error instanceof Error ? error.message : "Internal server error",
+      { status: 500 }
+    );
+  }
+}
