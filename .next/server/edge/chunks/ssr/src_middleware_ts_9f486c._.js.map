@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 5, "column": 0}, "map": {"version":3,"sources":["/turbopack/[project]/src/middleware.ts"],"sourcesContent":["import { clerkMiddleware } from \"@clerk/nextjs/server\";\nimport { NextResponse } from \"next/server\";\n\n// This example protects all routes including api/trpc routes\n// Please edit this to allow other routes to be public as needed.\n// See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your middleware\nexport default clerkMiddleware({\n  publicRoutes: [\"/api/webhooks/stripe\"],\n  debug: true\n});\n\nexport const config = {\n  matcher: [\"/((?!.*\\\\..*|_next).*)\", \"/\", \"/(api|trpc)(.*)\"],\n};\n"],"names":[],"mappings":";;;;;;;uCAMe,CAAA,GAAA,6KAAA,CAAA,kBAAe,AAAD,EAAE;IAC7B,cAAc;QAAC;KAAuB;IACtC,OAAO;AACT;AAEO,MAAM,SAAS;IACpB,SAAS;QAAC;QAA0B;QAAK;KAAkB;AAC7D"}},
+    {"offset": {"line": 25, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
