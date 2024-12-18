@@ -1,4 +1,4 @@
-import { openai, assistantId } from "~/app/assistant-config";
+import { openai } from "~/app/assistant-config";
 
 export const runtime = "nodejs";
 
@@ -9,11 +9,18 @@ export async function POST(
 ) {
   try {
     const threadId = params.threadId;
-    const { content } = await request.json();
+    const { content, assistantId } = await request.json();
 
     if (!content) {
       return Response.json(
         { error: "Message content is required" },
+        { status: 400 }
+      );
+    }
+
+    if (!assistantId) {
+      return Response.json(
+        { error: "Assistant ID is required" },
         { status: 400 }
       );
     }
@@ -26,7 +33,7 @@ export async function POST(
 
     // Create a run
     const run = await openai.beta.threads.runs.create(threadId, {
-      assistant_id: assistantId!,
+      assistant_id: assistantId,
     });
 
     // Create a streaming response

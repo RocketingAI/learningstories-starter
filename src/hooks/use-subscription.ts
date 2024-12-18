@@ -53,7 +53,8 @@ export function useSubscription(): SubscriptionData {
         // First check organization membership
         if (organization && membership) {
           // Get all members and find the admin
-          const members = await organization.getMemberships();
+          const membersResponse = await organization.getMemberships();
+          const members = Array.isArray(membersResponse) ? membersResponse : [];
           const adminMember = members.find(m => m.role === 'admin');
 
           if (adminMember) {

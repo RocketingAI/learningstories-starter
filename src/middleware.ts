@@ -6,7 +6,13 @@ import { NextResponse } from "next/server";
 // See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your middleware
 export default clerkMiddleware({
   publicRoutes: ["/api/webhooks/stripe"],
-  debug: true
+  debug: true,
+  afterAuth(auth, req, evt) {
+    // Handle after-auth logic here
+    if (!auth.userId && !auth.isPublicRoute) {
+      return NextResponse.redirect(new URL('/sign-in', req.url));
+    }
+  }
 });
 
 export const config = {

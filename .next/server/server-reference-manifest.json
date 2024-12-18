@@ -1,30 +1,30 @@
 {
   "node": {
-    "c68a6a9a5af732c89679efdbfc7867e2bca50904": {
-      "workers": {
-        "app/page": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/node_modules/@clerk/nextjs/dist/esm/app-router/server-actions.js [app-rsc] (ecmascript, action, ecmascript)\", ACTIONS_MODULE1 => \"[project]/node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js [app-rsc] (ecmascript, action, ecmascript)\" } [app-rsc] (ecmascript)"
-      },
-      "layer": {
-        "app/page": "actionBrowser"
-      }
-    },
     "242e7ea905a8dc9d2da24f9e149b6ff779d9882b": {
       "workers": {
-        "app/page": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/node_modules/@clerk/nextjs/dist/esm/app-router/server-actions.js [app-rsc] (ecmascript, action, ecmascript)\", ACTIONS_MODULE1 => \"[project]/node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js [app-rsc] (ecmascript, action, ecmascript)\" } [app-rsc] (ecmascript)"
+        "app/assistant/page": "[project]/.next-internal/server/app/assistant/page/actions.js { ACTIONS_MODULE0 => \"[project]/node_modules/@clerk/nextjs/dist/esm/app-router/server-actions.js [app-rsc] (ecmascript, action, ecmascript)\", ACTIONS_MODULE1 => \"[project]/node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js [app-rsc] (ecmascript, action, ecmascript)\" } [app-rsc] (ecmascript)"
       },
       "layer": {
-        "app/page": "actionBrowser"
+        "app/assistant/page": "actionBrowser"
+      }
+    },
+    "c68a6a9a5af732c89679efdbfc7867e2bca50904": {
+      "workers": {
+        "app/assistant/page": "[project]/.next-internal/server/app/assistant/page/actions.js { ACTIONS_MODULE0 => \"[project]/node_modules/@clerk/nextjs/dist/esm/app-router/server-actions.js [app-rsc] (ecmascript, action, ecmascript)\", ACTIONS_MODULE1 => \"[project]/node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js [app-rsc] (ecmascript, action, ecmascript)\" } [app-rsc] (ecmascript)"
+      },
+      "layer": {
+        "app/assistant/page": "actionBrowser"
       }
     },
     "e1eaf53a02fd4e431f40acb556bb244590bea70a": {
       "workers": {
-        "app/page": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/node_modules/@clerk/nextjs/dist/esm/app-router/server-actions.js [app-rsc] (ecmascript, action, ecmascript)\", ACTIONS_MODULE1 => \"[project]/node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js [app-rsc] (ecmascript, action, ecmascript)\" } [app-rsc] (ecmascript)"
+        "app/assistant/page": "[project]/.next-internal/server/app/assistant/page/actions.js { ACTIONS_MODULE0 => \"[project]/node_modules/@clerk/nextjs/dist/esm/app-router/server-actions.js [app-rsc] (ecmascript, action, ecmascript)\", ACTIONS_MODULE1 => \"[project]/node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js [app-rsc] (ecmascript, action, ecmascript)\" } [app-rsc] (ecmascript)"
       },
       "layer": {
-        "app/page": "actionBrowser"
+        "app/assistant/page": "actionBrowser"
       }
     }
   },
   "edge": {},
-  "encryptionKey": "Ro4pNjjtIjwyeHcyHfYsiKSFyMWAvbqCoioSPmrp/V8="
+  "encryptionKey": "3fUF9/U08Fldzq4weK6IKfyPcCJEkvKjqShRoLznCjk="
 }

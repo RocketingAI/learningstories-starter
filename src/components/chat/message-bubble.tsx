@@ -14,37 +14,39 @@ interface Coach {
 
 interface MessageBubbleProps {
   role: "user" | "assistant" | "code";
-  content: string;
+  content?: string;
+  text?: string;
   isLatest?: boolean;
   onUseComment?: (comment: string) => void;
 }
 
-export function MessageBubble({ role, content, isLatest, onUseComment }: MessageBubbleProps) {
+export function MessageBubble({ role, content, text, isLatest, onUseComment }: MessageBubbleProps) {
   const isUser = role === "user";
   const [coaches, setCoaches] = useState<Coach[]>([]);
-  const [displayContent, setDisplayContent] = useState(content);
+  const [displayContent, setDisplayContent] = useState(text || content || "");
 
   useEffect(() => {
+    const messageContent = text || content || "";
     // Try to extract coaching comments from the content
     try {
-      const jsonMatch = content.match(/\{[\s\S]*"comments"[\s\S]*\}/);
+      const jsonMatch = messageContent.match(/\{[\s\S]*"comments"[\s\S]*\}/);
       if (jsonMatch) {
         const jsonStr = jsonMatch[0];
         const parsed = JSON.parse(jsonStr);
         if (parsed.comments && Array.isArray(parsed.comments)) {
           setCoaches(parsed.comments);
           // Remove the JSON from the display content
-          setDisplayContent(content.replace(jsonStr, '').trim());
+          setDisplayContent(messageContent.replace(jsonStr, '').trim());
         }
       } else {
-        setDisplayContent(content);
+        setDisplayContent(messageContent);
         setCoaches([]);
       }
     } catch (e) {
-      setDisplayContent(content);
+      setDisplayContent(messageContent);
       setCoaches([]);
     }
-  }, [content]);
+  }, [text, content]);
 
   return (
     <>

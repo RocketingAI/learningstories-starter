@@ -4,7 +4,7 @@ import * as React from "react"
 
 import { Logo } from "~/components/sidebar/logo"
 
-import { BadgeCheck, CodeXml, Bell, Blocks, BookOpen, Bot, ChevronRight, ChevronsUpDown, CircleDollarSign, Command, CreditCard, File, FileText, Folder, Frame, LifeBuoy, LogIn, LogOut, Map, MessageCircle, MoreHorizontal, Pencil, PieChart, Send, Settings2, Share, FileSearch, Sparkles, SquareTerminal, Trash2, Archive 
+import { BadgeCheck, CodeXml, Bell, Blocks, BookOpen, Bot, ChevronRight, ChevronsUpDown, CircleDollarSign, Command, CreditCard, File, FileText, Folder, Frame, LifeBuoy, LogIn, LogOut, Map, MessageCircle, MoreHorizontal, Pencil, PieChart, Send, Settings2, Share, FileSearch, Sparkles, SquareTerminal, Trash2, Archive, Book 
 } from "lucide-react" 
 import {
 Collapsible,
@@ -130,50 +130,61 @@ function rebuildTree(items: FlatItem[]): TreeItem[] {
 const data = {
   navMain: [
     {
-      title: "AI Assistant",
+      title: "Dashboard",
+      url: "/",
+      icon: PieChart,
+    },
+    {
+      title: "Context Collection",
       url: "/assistant",
-      icon: MessageCircle,
+      icon: BookOpen,
     },
+    // {
+    //   title: "OpenAI",
+    //   url: "/examples/all",
+    //   icon: MessageCircle,
+    // },
+    // {
+    //   title: "Editor",
+    //   url: "/editor",
+    //   icon: Pencil,
+    // },
+    // {
+    //   title: "Templates",
+    //   url: "/templates",
+    //   icon: Blocks,
+    // },
+    // {
+    //   title: "Function calling",
+    //   url: "/examples/function-calling",
+    //   icon: Bot,
+    // },
+    // {
+    //   title: "File search",
+    //   url: "/examples/file-search",
+    //   icon: FileSearch,
+    // },
+    // {
+    //   title: "Playground",
+    //   url: "/testpage3",
+    //   icon: CodeXml,
+    // },
+
     {
-      title: "OpenAI",
-      url: "/examples/all",
-      icon: MessageCircle,
-    },
-    {
-      title: "Editor",
-      url: "/editor",
-      icon: Pencil,
-    },
-    {
-      title: "Templates",
-      url: "/templates",
-      icon: Blocks,
-    },
-    {
-      title: "Function calling",
-      url: "/examples/function-calling",
-      icon: Bot,
-    },
-    {
-      title: "File search",
-      url: "/examples/file-search",
-      icon: FileSearch,
-    },
-    {
-      title: "Playground",
-      url: "/testpage3",
-      icon: CodeXml,
+      title: "Strategy Builder",
+      url: "/testpage6",
+      icon: SquareTerminal,
     },
     {
       title: "Document Generator",
       url: "/testpage4",
-      icon: CodeXml,
+      icon: Sparkles,
     },
-    {
-      title: "Function Calling",
-      url: "/function-calling",
-      icon: CodeXml,
-    },
+    // {
+    //   title: "Function Calling",
+    //   url: "/function-calling",
+    //   icon: CodeXml,
+    // },
   ],
   navSecondary: [
     {

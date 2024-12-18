@@ -19,6 +19,7 @@ import {
   AlertDialogTitle,
 } from "~/components/ui/alert-dialog";
 import { cn } from "~/lib/utils";
+import { collapse } from 'slate';
 
 const initialFolders = {
   id: 'root',
@@ -27,7 +28,7 @@ const initialFolders = {
   children: [
     {
       id: '1',
-      name: 'Client 1',
+      name: 'Company Context',
       type: 'folder',
       children: [
         { id: '3', name: 'Quote 1', type: 'file' },
@@ -36,25 +37,48 @@ const initialFolders = {
     },
     {
       id: '2',
-      name: 'Archive',
+      name: 'Salesperson Context',
       type: 'folder',
       children: [
         {
           id: '6',
           name: 'Client 2',
           type: 'folder',
-          children: [
-            { id: '7', name: 'Quote', type: 'file' }
-          ]
+          children: []
         }
       ]
+    },
+    {
+      id: '7',
+      name: 'Product Context',
+      type: 'folder',
+      children: [
+        {
+          id: '8',
+          name: 'Client 2',
+          type: 'folder',
+          children: []
+        }
+      ]
+    },
+    {
+      id: '9',
+      name: 'Deal Context',
+      type: 'folder',
+      children: []
+    },
+    {
+      id: '10',
+      name: 'Customer Context',
+      type: 'folder',
+      children: []
     }
   ]
 };
 
 const FolderTree = () => {
   const [folders, setFolders] = useState(initialFolders);
-  const [expandedFolders, setExpandedFolders] = useState(new Set(['root', '1', '2']));
+  const [expandedFolders, setExpandedFolders] = useState(new Set(['root']));
   const [draggedItem, setDraggedItem] = useState(null);
   const [dropTarget, setDropTarget] = useState(null);
   const [dropPosition, setDropPosition] = useState(null);
@@ -312,7 +336,7 @@ const FolderTree = () => {
       <div key={item.id} className="select-none">
         <div
           className={cn(
-            "relative flex items-center gap-2 rounded-md px-1.5 h-7 text-sm outline-none transition-colors",
+            "relative flex items-center gap-2 rounded-md px-1.5 h-7 text-sm outline-none transition-colors peer",
             "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
             isDragging && "opacity-50",
             isDropTarget && "bg-sidebar-accent/10",
@@ -398,7 +422,7 @@ const FolderTree = () => {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
-                className="ml-auto h-6 w-6 shrink-0 p-0 hover:bg-sidebar-accent/50"
+                className="ml-auto h-6 w-6 shrink-0 p-0 hover:bg-sidebar-accent/50 opacity-0 hover:opacity-100 peer-hover:opacity-100 transition-opacity"
                 onClick={(e) => e.stopPropagation()}
               >
                 <MoreVertical className="size-4" />

@@ -29,7 +29,7 @@ export default function Home() {
             
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center pl-[var(--sidebar-collapsed-padding,0px)]">
                   <Bot className="w-4 h-4 text-primary" />
                 </div>
                 <div className="flex flex-col">
@@ -45,11 +45,11 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="ml-auto flex items-center gap-2">
+            {/* <div className="ml-auto flex items-center gap-2">
               <kbd className="hidden sm:inline-flex h-5 select-none items-center gap-1 rounded border border-muted bg-muted px-1.5 text-[10px] font-medium text-muted-foreground opacity-100">
                 <span className="text-xs"><Command className="h-3 w-3" /></span>K
               </kbd>
-            </div>
+            </div> */}
           </header>
 
           <main className="flex-1 overflow-hidden">
