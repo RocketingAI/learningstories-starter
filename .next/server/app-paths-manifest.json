@@ -1,4 +1,12 @@
 {
+  "/page": "app/page.js",
+  "/sign-up/[[...sign-up]]/page": "app/sign-up/[[...sign-up]]/page.js",
+  "/sign-up/page": "app/sign-up/page.js",
+  "/testpage6/page": "app/testpage6/page.js",
   "/assistant/page": "app/assistant/page.js",
-  "/api/assistants/threads/route": "app/api/assistants/threads/route.js"
+  "/api/assistants/threads/route": "app/api/assistants/threads/route.js",
+  "/testpage4/page": "app/testpage4/page.js",
+  "/sign-in/[[...sign-in]]/page": "app/sign-in/[[...sign-in]]/page.js",
+  "/api/assistants/threads/[threadId]/messages/route": "app/api/assistants/threads/[threadId]/messages/route.js",
+  "/_not-found/page": "app/_not-found/page.js"
 }

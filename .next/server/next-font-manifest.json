@@ -1,6 +1,28 @@
 {
   "app": {
+    "[project]/src/app/page": [
+      "static/media/Geist_Variable-s.p.781b491f.woff2"
+    ],
+    "[project]/src/app/sign-up/[[...sign-up]]/page": [
+      "static/media/Geist_Variable-s.p.781b491f.woff2"
+    ],
+    "[project]/src/app/sign-up/page": [
+      "static/media/Geist_Variable-s.p.781b491f.woff2"
+    ],
+    "[project]/src/app/testpage6/page": [
+      "static/media/Geist_Variable-s.p.781b491f.woff2",
+      "static/media/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw-s.p.7b3669ea.woff2"
+    ],
     "[project]/src/app/assistant/page": [
+      "static/media/Geist_Variable-s.p.781b491f.woff2"
+    ],
+    "[project]/src/app/testpage4/page": [
+      "static/media/Geist_Variable-s.p.781b491f.woff2"
+    ],
+    "[project]/src/app/sign-in/[[...sign-in]]/page": [
+      "static/media/Geist_Variable-s.p.781b491f.woff2"
+    ],
+    "[project]/src/app/_not-found/page": [
       "static/media/Geist_Variable-s.p.781b491f.woff2"
     ]
   },

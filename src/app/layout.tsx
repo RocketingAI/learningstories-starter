@@ -39,17 +39,7 @@ export default function RootLayout({
           <ClerkProvider>
             <TRPCReactProvider headers={headers()}>
               <ClientInit />
-              <SignedIn>
-                <main>{children}</main>
-              </SignedIn>
-              <SignedOut>
-                <div className={cn("flex", "items-center", "justify-center", "min-h-screen")}>
-                  <div className={cn("text-center")}>
-                    <h1 className={cn("text-2xl", "font-bold", "mb-4")}>Please Sign In</h1>
-                    <p>You need to be signed in to access this page.</p>
-                  </div>
-                </div>
-              </SignedOut>
+              {children}
             </TRPCReactProvider>
           </ClerkProvider>
         </ThemeProvider>
