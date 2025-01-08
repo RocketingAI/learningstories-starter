@@ -1,0 +1,82 @@
+/* Base editor container */
+.codex-editor {
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Main content area */
+.codex-editor__redactor {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Block container */
+.ce-block {
+  margin: 0 !important;
+}
+
+.ce-block__content {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 1rem !important;
+}
+
+/* Hide all editor toolbars */
+.ce-toolbar {
+  display: none !important;
+}
+
+.ce-inline-toolbar {
+  display: none !important;
+}
+
+.ce-conversion-toolbar {
+  display: none !important;
+}
+
+.ce-settings {
+  display: none !important;
+}
+
+.ce-toolbar__plus {
+  display: none !important;
+}
+
+.ce-toolbar__settings-btn {
+  display: none !important;
+}
+
+/* Hide block tunes menu */
+.ce-block-settings {
+  display: none !important;
+}
+
+.ce-block__content--empty::before {
+  color: #666 !important;
+}
+
+/* Adjust paragraph spacing */
+.ce-paragraph {
+  padding: 0.5em 0 !important;
+  margin: 0 !important;
+}
+
+/* Header styles */
+.ce-header {
+  padding: 0.75em 0 0.25em !important;
+  margin: 0 !important;
+}
+
+/* List styles */
+.cdx-list {
+  margin: 0 !important;
+  padding-left: 2em !important;
+}
+
+/* Quote styles */
+.cdx-quote {
+  margin: 0.5em 0 !important;
+  padding: 0.5em 1em !important;
+  border-left: 3px solid #666 !important;
+}
