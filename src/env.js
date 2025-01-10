@@ -8,6 +8,10 @@ export const env = createEnv({
       .enum(["development", "test", "production"])
       .default("development"),
     CLERK_SECRET_KEY: z.string().min(1),
+    // OPENAI
+    OPENAI_API_KEY: z.string().min(1),
+    OPENAI_REALTIME_API_KEY: z.string().min(1),  // New variable for Realtime API
+    OPENAI_PROJECT_ID: z.string().min(1),
     // STRIPE
     STRIPE_SECRET_KEY: z.string().min(1),
     STRIPE_WEBHOOK_SECRET: z.string().min(1),
@@ -38,6 +42,10 @@ export const env = createEnv({
     STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
     STRIPE_PRICE_ID: process.env.STRIPE_PRICE_ID,
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+    // OPENAI
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    OPENAI_REALTIME_API_KEY: process.env.OPENAI_REALTIME_API_KEY,  // New variable
+    OPENAI_PROJECT_ID: process.env.OPENAI_PROJECT_ID,
   },
 
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
